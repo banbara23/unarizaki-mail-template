@@ -26,18 +26,64 @@
           ></v-text-field>
         </div>
 
-        <div>
+        <!-- <div>
           <v-text-field
             label="チェックイン"
             placeholder=""
           ></v-text-field>
+        </div> -->
+        <div>
+          <v-menu
+            :close-on-content-click="false"
+            v-model="menu2"
+            :nudge-right="40"
+            lazy
+            transition="scale-transition"
+            offset-y
+            full-width
+            min-width="290px"
+          >
+            <v-text-field
+              slot="activator"
+              v-model="date"
+              label="チェックイン日"
+              prepend-icon="event"
+              hint="YYYY/MM/DD format"
+              readonly
+            ></v-text-field>
+            <v-date-picker
+              v-model="date"
+              @input="menu2 = false"
+              locale="jp"
+            ></v-date-picker>
+          </v-menu>
         </div>
 
         <div>
-          <v-text-field
-            label="チェックアウト"
-            placeholder=""
-          ></v-text-field>
+          <v-menu
+            :close-on-content-click="false"
+            v-model="menu2"
+            :nudge-right="40"
+            lazy
+            transition="scale-transition"
+            offset-y
+            full-width
+            min-width="290px"
+          >
+            <v-text-field
+              slot="activator"
+              v-model="date"
+              label="チェックアウト"
+              prepend-icon="event"
+              hint="YYYY/MM/DD format"
+              readonly
+            ></v-text-field>
+            <v-date-picker
+              v-model="date"
+              @input="menu2 = false"
+              locale="jp"
+            ></v-date-picker>
+          </v-menu>
         </div>
 
         <div>
@@ -57,6 +103,7 @@
         </div>
 
       </div>
+
     </v-navigation-drawer>
 
     <!-- ツールバー -->
@@ -187,7 +234,8 @@ export default {
         items: [{ title: 'List Item' }]
       }
     ],
-    valid: false
+    valid: false,
+    date: new Date().toISOString().substr(0, 10)
     // nameRules: [v => !!v || 'required']
   })
 }
