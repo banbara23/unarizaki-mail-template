@@ -132,7 +132,6 @@
           v-for="item in items"
           v-model="item.active"
           :key="item.title"
-          :prepend-icon="item.action"
           no-action
         >
           <v-list-tile slot="activator">
