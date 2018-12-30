@@ -13,7 +13,6 @@
       app
     >
       <div class="container fluid pb-0">
-        <!-- <v-subheader class="black--text title">入力</v-subheader> -->
         <p>入力</p>
         <div>
           <v-text-field
@@ -29,12 +28,6 @@
           ></v-text-field>
         </div>
 
-        <!-- <div>
-          <v-text-field
-            label="チェックイン"
-            placeholder=""
-          ></v-text-field>
-        </div> -->
         <div>
           <v-menu
             :close-on-content-click="false"
@@ -149,10 +142,7 @@
       sm8
       md6
     >
-      <!-- <div class="text-xs-center">
-        <logo />
-        <vuetify-logo />
-      </div> -->
+
       <v-card>
         <v-card-title class="headline">{{key}}2本目〜/PM〜他館</v-card-title>
         <v-card-text>
