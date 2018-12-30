@@ -18,6 +18,7 @@
           <v-text-field
             label="担当者名"
             placeholder=""
+            v-model="sender_name"
           ></v-text-field>
         </div>
 
@@ -124,7 +125,7 @@
           <v-list-tile
             v-for="subItem in item.items"
             :key="subItem.title"
-            @click="key=subItem.key"
+            @click="itemKey=subItem.code"
           >
             <v-list-tile-content>
               <v-list-tile-title>{{ subItem.title }}</v-list-tile-title>
@@ -142,9 +143,8 @@
       sm8
       md6
     >
-
       <v-card>
-        <v-card-title class="headline">{{key}}2本目〜/PM〜他館</v-card-title>
+        <v-card-title class="headline">{{itemKey}}2本目〜/PM〜他館</v-card-title>
         <v-card-text>
           <p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>
         </v-card-text>
@@ -167,6 +167,8 @@ import VuetifyLogo from '~/components/VuetifyLogo.vue'
 
 export default {
   data: () => ({
+    itemKey: '',
+    sender_name: '',
     items: [
       {
         action: 'local_activity',
