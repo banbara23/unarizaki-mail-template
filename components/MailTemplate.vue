@@ -23,6 +23,18 @@
 
 <script>
 export default {
-  props: ['title', 'text']
+  props: ['title', 'text', 'sender_name'],
+  mounted: function() {
+    this.text = this.text.replace('sender_name', this.sender_name)
+    // this.$nextTick(function() {
+    //   console.log(this.sender_name)
+    //   // vm.text = vm.text.replace('sender_name', sender_name)
+    // })
+  },
+  methods: {
+    replaceText: function(text) {
+      text.replace('sender_name', this.sender_name)
+    }
+  }
 }
 </script>

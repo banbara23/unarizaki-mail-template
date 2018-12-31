@@ -42,14 +42,14 @@
           >
             <v-text-field
               slot="activator"
-              v-model="date"
+              v-model="checkin_date"
               label="チェックイン日"
               prepend-icon="event"
               hint="YYYY/MM/DD format"
               readonly
             ></v-text-field>
             <v-date-picker
-              v-model="date"
+              v-model="checkin_date"
               @input="menu2 = false"
               locale="jp"
             ></v-date-picker>
@@ -143,6 +143,7 @@
     <mail-template
       :title="title"
       :text="mail_temp"
+      :sender_name="sender_name"
     ></mail-template>
 
   </v-layout>
@@ -212,21 +213,21 @@ export default {
     getMailTemplate: function(code) {
       switch (code) {
         case '2pm_other_hotel':
-          return `こんにちは。ダイビングチームうなりざきのです。
+          return `こんにちは。ダイビングチームうなりざきの sender_name です。
 この度はお問い合わせ頂きまして誠にありがとうございます。
 
 下記の日程でダイビングのご予約承りました。
 念のため、内容のご確認をお願い致します。
 
 ■ご宿泊
-チェックイン：　　月日
-チェックアウト：　月日
-ご宿泊先：　　　　（個人手配）
+チェックイン：　checkin_date 月日
+チェックアウト：　checkout_date 月日
+ご宿泊先：　　　　other_hotel
 ※チェックアウトはダイビングご利用日の翌日になっています。
 
 ■ダイビング
 日程：　月日（日間）
-人数：　男性　名様　女性　名様
+人数：　男性　count_man 名様　女性　count_female 名様
 内容：　ファンダイビング
 レンタル：　不要
 
@@ -312,7 +313,7 @@ http://itp.ne.jp/dir_result/?ad=47207&gr=225&cp=0&tb=1&st=1&pg=1&sk=3&srk=1
 ダイビングチームうなりざき`
 
         case '2pm_my_hotel':
-          return `こんにちは。ダイビングチームうなりざきのです。
+          return `こんにちは。ダイビングチームうなりざきの sender_name です。
 この度はお問い合わせ頂きまして誠にありがとうございます。
 
 下記の日程でご宿泊とダイビングのご予約を承りました。
@@ -414,7 +415,7 @@ http://itp.ne.jp/dir_result/?ad=47207&gr=225&cp=0&tb=1&st=1&pg=1&sk=3&srk=1
 ダイビングチームうなりざき`
 
         case '2pm_other_near_hotel':
-          return `こんにちは。ダイビングチームうなりざきのです。
+          return `こんにちは。ダイビングチームうなりざきの sender_name です。
 この度はお問い合わせ頂きまして誠にありがとうございます。
 
 下記の日程でご予約承りました。
