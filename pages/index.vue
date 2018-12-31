@@ -107,6 +107,7 @@
       v-model="drawer"
       fixed
       app
+      clipped
     >
       <v-subheader>テンプレート</v-subheader>
       <v-list expand="true">
@@ -125,7 +126,7 @@
           <v-list-tile
             v-for="subItem in item.items"
             :key="subItem.title"
-            @click="itemKey=subItem.code"
+            @click="mail_temp = getMailTemplate(subItem.code), title=subItem.title"
           >
             <v-list-tile-content>
               <v-list-tile-title>{{ subItem.title }}</v-list-tile-title>
@@ -138,37 +139,25 @@
         </v-list-group>
       </v-list>
     </v-navigation-drawer>
-    <v-flex
-      xs12
-      sm8
-      md6
-    >
-      <v-card>
-        <v-card-title class="headline">{{itemKey}}2本目〜/PM〜他館</v-card-title>
-        <v-card-text>
-          <p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn
-            color="primary"
-            flat
-            nuxt
-          >Copy to Clip</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-flex>
+
+    <mail-template
+      :title="title"
+      :text="mail_temp"
+    ></mail-template>
+
   </v-layout>
 </template>
 
 <script>
 import Logo from '~/components/Logo.vue'
 import VuetifyLogo from '~/components/VuetifyLogo.vue'
+import MailTemplate from '~/components/MailTemplate.vue'
 
 export default {
   data: () => ({
-    itemKey: '',
     sender_name: '',
+    mail_temp: '',
+    title: '',
     items: [
       {
         action: 'local_activity',
@@ -223,9 +212,121 @@ export default {
     ]
   }),
   components: {
-    Logo,
-    VuetifyLogo
+    MailTemplate
   },
-  props: ['key']
+  methods: {
+    getMailTemplate: function(code) {
+      switch (code) {
+        // case '2pm_other_hotel':
+        //   break
+        // case '2pm_my_hotel':
+        //   break
+        // case '2pm_other_near_hotel':
+        //   break
+        default:
+          return `こんにちは。ダイビングチームうなりざきのです。
+この度はお問い合わせ頂きまして誠にありがとうございます。
+
+下記の日程でご予約承りました。
+お手数ですが、内容の確認をお願い致します。
+
+■ご宿泊
+チェックイン：　　月日
+チェックアウト：　月日
+ご宿泊先：　　　　（個人手配）
+
+■ダイビング
+日程：　月日(日間)
+人数：　男性　名様　女性　名様
+内容：　ファンダイビング
+レンタル器材：　不要
+※日は2本目から、2ダイブ参加希望
+
+チェックインの際に、Cカードのご提示をお願いしておりますので、
+必ずお持ちください。
+
+到着日を除く、ダイビング日程中お申し出がない場合、
+ランチを別途６８０円でご用意しております。
+ご不要の際は事前にご連絡ください。
+
+到着日のダイビングですが、石垣9時30分発「上原行」の便に
+ご乗船頂ければ、2本目から２ダイブ可能です。
+但し、下記の場合は１５時頃からの１ダイブのみとなります。ご了承ください。
+　・全てのボートが遠征している場合
+　・ゲストが多く、ボート定員を超えてしまう場合
+　・天候不良により上原便欠航のため、大原着となった場合
+
+尚、２ダイブ可能な場合、ショップへ到着後すぐの出発となります。
+石垣で昼食をご用意頂き、すぐに出発できるご準備で
+お越しくださいますようお願い申し上げます。
+
+
+到着日のダイビングは、朝から出港している船に合流しますので、
+近場のポイントになることが多くなります。
+到着日はリクエストにお応えできない事がございますので、ご了承ください。
+
+お手数ですが、下記詳細をお知らせくださいませ。
+１）石垣空港への到着時刻：
+２）到着後２ダイブご希望でしょうか？もしくは１ダイブご希望でしょうか？
+
+
+それでは、石垣空港からの移動方法をご案内させて頂きます。
+新石垣空港から、バスかタクシーで「離島桟橋」までお越しください。
+
+路線バスは２社、空港へ乗り入れしております。
+
+■東(あずま)運輸
+空港線には2路線あります。
+◎系統４(平得・大浜・白浜経由)
+◎系統１０(日航八重山・ANAインターコンチネンタル経由)
+所要時間：　片道約40～50分前後
+料金：　　　　約540円
+http://www.cosmos.ne.jp/~bus/
+
+■カリー観光バス
+空港～石垣港離島ターミナル間、直通便。
+所要時間：　片道約30分。
+料金：　　　　540円　⇒500円になりました！
+http://karrykanko.com/bus.html
+
+
+※空港ターミナル出入口前にタクシー乗り場がございます。
+市街地まで所要時間：約30分
+料金：　　　　　　　約3,500～4,000円
+※上記時間、料金は平均的な目安です。
+※2016年10月より料金が改定されました。
+
+時間帯や道路状況により変わってまいりますのでご注意ください。 　
+http://itp.ne.jp/dir_result/?ad=47207&gr=225&cp=0&tb=1&st=1&pg=1&sk=3&srk=1
+
+
+離島ターミナルにて、「安栄観光」・「上原行」のチケットをお買い求めください。
+上原港のみ「安栄観光」「八重山観光フェリー」のどちらでもお迎えに上がります。
+※安栄観光のチケットでも、「八重山観光フェリー」にご乗船頂けます。
+
+お手数ですが、ご乗船前に必ずお電話下さいますようお願い申し上げます。
+到着時間に合わせまして、上原港までスタッフがお迎えに上がります。
+（天候不良により上原欠航の場合は、改めてご案内致しますので、
+下記までご連絡ください。）
+送迎不要な場合も、お手数ですがご連絡ください。
+ ０９８０－８５－６１４６
+
+他の船会社や港をご利用の際は、送迎致しかねますのでご注意ください。
+
+※　上原港　と　大原港　と名前が似ておりますので、お乗り間違えのないようご注意ください。
+
+
+ご宿泊先へはダイビング終了後、お送りさせて頂きますので、
+あらかじめご了承くださいませ。
+
+何かご不明な点やご質問等ございましたら、ご連絡頂けますと幸いです。
+どうぞ宜しくお願い致します。
+
+
+ダイビングチームうなりざき
+`
+      }
+    }
+  }
 }
 </script>
