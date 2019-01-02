@@ -6,7 +6,6 @@
   >
     <!-- 右ドロワー -->
     <v-navigation-drawer
-      v-model="drawerRight"
       fixed
       right
       clipped
@@ -32,7 +31,6 @@
         <div>
           <v-menu
             :close-on-content-click="false"
-            v-model="menu2"
             :nudge-right="40"
             lazy
             transition="scale-transition"
@@ -50,7 +48,6 @@
             ></v-text-field>
             <v-date-picker
               v-model="checkin_date"
-              @input="menu2 = false"
               locale="jp"
             ></v-date-picker>
           </v-menu>
@@ -59,7 +56,6 @@
         <div>
           <v-menu
             :close-on-content-click="false"
-            v-model="menu2"
             :nudge-right="40"
             lazy
             transition="scale-transition"
@@ -77,7 +73,6 @@
             ></v-text-field>
             <v-date-picker
               v-model="date"
-              @input="menu2 = false"
               locale="jp"
             ></v-date-picker>
           </v-menu>
@@ -104,13 +99,12 @@
     </v-navigation-drawer>
     <!-- 左ナビゲーション -->
     <v-navigation-drawer
-      v-model="drawer"
       fixed
       app
       clipped
     >
       <v-subheader>テンプレート</v-subheader>
-      <v-list expand="true">
+      <v-list :expand=true>
         <v-list-group
           v-for="item in items"
           v-model="item.active"
@@ -157,6 +151,8 @@ export default {
     sender_name: '',
     mail_temp: '',
     title: '',
+    valid: false,
+    checkin_date: new Date().toISOString().substr(0, 10),
     items: [
       {
         title: '2本目〜',

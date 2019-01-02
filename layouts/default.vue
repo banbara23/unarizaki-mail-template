@@ -24,9 +24,7 @@
 <script>
 export default {
   data: () => ({
-    title: 'うなりざきメールテンプレ',
-    valid: false,
-    date: new Date().toISOString().substr(0, 10)
+    title: 'うなりざきメールテンプレ'
   })
 }
 </script>
