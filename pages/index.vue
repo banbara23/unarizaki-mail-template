@@ -206,6 +206,15 @@ export default {
   components: {
     MailTemplate
   },
+  watch: {
+    sender_name: function(newName, oldName) {
+      if (!newName) return
+      if (oldName == '') {
+        oldName = 'sender_name'
+      }
+      this.mail_temp = this.mail_temp.replace(oldName, newName)
+    }
+  },
   methods: {
     createTtile: function(title, subTitle) {
       return `${title} / ${subTitle}`
