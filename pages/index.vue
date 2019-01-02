@@ -36,6 +36,7 @@
             transition="scale-transition"
             offset-y
             full-width
+            v-model="checkin_menu"
             min-width="290px"
           >
             <v-text-field
@@ -43,11 +44,12 @@
               v-model="checkin_date"
               label="チェックイン日"
               prepend-icon="event"
-              hint="YYYY/MM/DD format"
               readonly
             ></v-text-field>
             <v-date-picker
+              :day-format="date => new Date(date).getDate()"
               v-model="checkin_date"
+              @input="checkin_menu = false"
               locale="jp"
             ></v-date-picker>
           </v-menu>
@@ -61,6 +63,7 @@
             transition="scale-transition"
             offset-y
             full-width
+            v-model="checkout_menu"
             min-width="290px"
           >
             <v-text-field
@@ -68,11 +71,12 @@
               v-model="checkout_date"
               label="チェックアウト"
               prepend-icon="event"
-              hint="YYYY/MM/DD format"
               readonly
             ></v-text-field>
             <v-date-picker
               v-model="checkout_date"
+              @input="checkout_menu = false"
+              :day-format="date => new Date(date).getDate()"
               locale="jp"
             ></v-date-picker>
           </v-menu>
@@ -152,6 +156,8 @@ export default {
     mail_temp: '',
     title: '',
     valid: false,
+    checkin_menu: false,
+    checkout_menu: false,
     checkin_date: new Date().toISOString().substr(0, 10),
     checkout_date: new Date().toISOString().substr(0, 10),
     items: [
