@@ -65,14 +65,14 @@
           >
             <v-text-field
               slot="activator"
-              v-model="date"
+              v-model="checkout_date"
               label="チェックアウト"
               prepend-icon="event"
               hint="YYYY/MM/DD format"
               readonly
             ></v-text-field>
             <v-date-picker
-              v-model="date"
+              v-model="checkout_date"
               locale="jp"
             ></v-date-picker>
           </v-menu>
@@ -153,6 +153,7 @@ export default {
     title: '',
     valid: false,
     checkin_date: new Date().toISOString().substr(0, 10),
+    checkout_date: new Date().toISOString().substr(0, 10),
     items: [
       {
         title: '2本目〜',
