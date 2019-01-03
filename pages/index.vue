@@ -124,7 +124,7 @@
           <v-list-tile
             v-for="subItem in item.items"
             :key="subItem.title"
-            @click="mail_temp = getMailTemplate(subItem.code), title=createTtile(item.title, subItem.title)"
+            @click="selected_code = subItem.code, title=createTtile(item.title, subItem.title)"
           >
             <v-list-tile-content>
               <v-list-tile-title>{{ subItem.title }}</v-list-tile-title>
@@ -139,11 +139,20 @@
     </v-navigation-drawer>
 
     <pm2-other-hotel
+      v-if="selected_code == '2pm_other_hotel'"
       :title="title"
       :text="mail_temp"
       :sender_name="sender_name"
       :checkin_date="checkin_date"
     ></pm2-other-hotel>
+
+    <pm2-my-hotel
+      v-if="selected_code == '2pm_my_hotel'"
+      :title="title"
+      :text="mail_temp"
+      :sender_name="sender_name"
+      :checkin_date="checkin_date"
+    ></pm2-my-hotel>
 
   </v-layout>
 </template>
@@ -151,10 +160,12 @@
 <script>
 import MailTemplate from '~/components/MailTemplate.vue'
 import Pm2OtherHotel from '~/components/2pm/2pmOtherHotel.vue'
+import Pm2MyHotel from '~/components/2pm/2pmMyHotel.vue'
 
 export default {
   data: () => ({
     sender_name: '',
+    selected_code: '',
     mail_temp: '',
     title: '',
     valid: false,
@@ -210,7 +221,8 @@ export default {
   }),
   components: {
     MailTemplate,
-    Pm2OtherHotel
+    Pm2OtherHotel,
+    Pm2MyHotel
   },
   watch: {
     sender_name: function(newName, oldName) {
