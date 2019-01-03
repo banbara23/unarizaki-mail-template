@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  props: ['title', 'text', 'sender_name'],
+  props: ['title', 'text', 'sender_name', 'checkin_date'],
   mounted: function() {
     this.text = this.text.replace('sender_name', this.sender_name)
     // this.$nextTick(function() {

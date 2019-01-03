@@ -142,6 +142,7 @@
       :title="title"
       :text="mail_temp"
       :sender_name="sender_name"
+      :checkin_date="checkin_date"
     ></mail-template>
 
   </v-layout>
@@ -216,6 +217,12 @@ export default {
         oldName = 'sender_name'
       }
       this.mail_temp = this.mail_temp.replace(oldName, newName)
+    },
+    checkin_date: function(oldVal, newVal) {
+      this.mail_temp = this.mail_temp.replace(oldVal, newVal)
+    },
+    checkout_date: function(oldVal, newVal) {
+      this.mail_temp = this.mail_temp.replace(oldVal, newVal)
     }
   },
   methods: {
