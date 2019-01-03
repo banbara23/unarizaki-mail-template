@@ -138,18 +138,19 @@
       </v-list>
     </v-navigation-drawer>
 
-    <mail-template
+    <pm2-other-hotel
       :title="title"
       :text="mail_temp"
       :sender_name="sender_name"
       :checkin_date="checkin_date"
-    ></mail-template>
+    ></pm2-other-hotel>
 
   </v-layout>
 </template>
 
 <script>
 import MailTemplate from '~/components/MailTemplate.vue'
+import Pm2OtherHotel from '~/components/2pm/2pmOtherHotel.vue'
 
 export default {
   data: () => ({
@@ -208,7 +209,8 @@ export default {
     ]
   }),
   components: {
-    MailTemplate
+    MailTemplate,
+    Pm2OtherHotel
   },
   watch: {
     sender_name: function(newName, oldName) {
