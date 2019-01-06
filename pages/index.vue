@@ -207,11 +207,16 @@
 </template>
 
 <script>
-import MailTemplate from '~/components/MailTemplate.vue'
+//左メニューは外部JSから読み込む
+import leftMenuValue from './leftMenuValue.js'
+
+// import MailTemplate from '~/components/MailTemplate.vue'
+
+// 2PM
 import Pm2OtherHotel from '~/components/2pm/2pmOtherHotel.vue'
 import Pm2OtherNearHotel from '~/components/2pm/2pmOtherNearHotel.vue'
 import Pm2MyHotel from '~/components/2pm/2pmMyHotel.vue'
-
+// 3DIVE
 import Dive3OtherHotel from '~/components/dive3/Dive3OtherHotel.vue'
 import Dive3OtherNearHotel from '~/components/dive3/Dive3OtherNearHotel.vue'
 import Dive3MyHotelSummer from '~/components/dive3/Dive3MyHotelSummer.vue'
@@ -220,7 +225,6 @@ import Dive3MyHotelWinter from '~/components/dive3/Dive3MyHotelWinter.vue'
 
 export default {
   components: {
-    MailTemplate,
     Pm2OtherHotel,
     Pm2OtherNearHotel,
     Pm2MyHotel,
@@ -241,56 +245,7 @@ export default {
     checkout_menu: false,
     checkin_date: new Date().toISOString().substr(0, 10),
     checkout_date: new Date().toISOString().substr(0, 10),
-    items: [
-      {
-        title: '2本目〜',
-        active: true,
-        items: [
-          { title: 'PM～他館', code: '2pm_other_hotel' },
-          { title: 'PM～宿泊有', code: '2pm_my_hotel' },
-          { title: 'PM～徒歩圏内宿', code: '2pm_other_near_hotel' }
-        ]
-      },
-      {
-        title: '3DIVE〜',
-        active: true,
-        items: [
-          { title: '宿泊 冬季', code: '3dive_my_hotel_winter' },
-          { title: '宿泊 夏季', code: '3dive_my_hotel_summer' },
-          {
-            title: '宿泊 夏季(未スケジュール発表)',
-            code: '3dive_my_hotel_summer_no_schedule'
-          },
-          { title: '他館 要送迎', code: '3dive_other_hotel' },
-          { title: '他館 徒歩圏内', code: '3dive_other_near_hotel' }
-        ]
-      }
-      // {
-      //   title: 'Education',
-      //   active: true,
-      //   items: [{ title: 'List Item' }]
-      // },
-      // {
-      //   title: 'Family',
-      //   active: true,
-      //   items: [{ title: 'List Item' }]
-      // },
-      // {
-      //   title: 'Health',
-      //   active: true,
-      //   items: [{ title: 'List Item' }]
-      // },
-      // {
-      //   title: 'Office',
-      //   active: true,
-      //   items: [{ title: 'List Item' }]
-      // },
-      // {
-      //   title: 'Promotions',
-      //   active: true,
-      //   items: [{ title: 'List Item' }]
-      // }
-    ]
+    items: leftMenuValue
   }),
   // watch: {
   //   sender_name: function(newName, oldName) {
