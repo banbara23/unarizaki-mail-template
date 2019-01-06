@@ -163,6 +163,46 @@
       :checkin_date="checkin_date"
     ></pm2-my-hotel>
 
+    <dive3-my-hotel-winter
+      v-if="selected_code == '3dive_my_hotel_winter'"
+      :title="title"
+      :sender_name="sender_name"
+      :checkin_date="checkin_date"
+      :checkout_date="checkout_date"
+    ></dive3-my-hotel-winter>
+
+    <dive3-my-hotel-summer
+      v-if="selected_code == '3dive_my_hotel_summer'"
+      :title="title"
+      :sender_name="sender_name"
+      :checkin_date="checkin_date"
+      :checkout_date="checkout_date"
+    ></dive3-my-hotel-summer>
+
+    <dive3-my-hotel-summer-no-schedule
+      v-if="selected_code == '3dive_my_hotel_summer_no_schedule'"
+      :title="title"
+      :sender_name="sender_name"
+      :checkin_date="checkin_date"
+      :checkout_date="checkout_date"
+    ></dive3-my-hotel-summer-no-schedule>
+
+    <dive3-other-hotel
+      v-if="selected_code == '3dive_other_hotel'"
+      :title="title"
+      :sender_name="sender_name"
+      :checkin_date="checkin_date"
+      :checkout_date="checkout_date"
+    ></dive3-other-hotel>
+
+    <dive3-other-near-hotel
+      v-if="selected_code == '3dive_other_near_hotel'"
+      :title="title"
+      :sender_name="sender_name"
+      :checkin_date="checkin_date"
+      :checkout_date="checkout_date"
+    ></dive3-other-near-hotel>
+
   </v-layout>
 </template>
 
@@ -172,12 +212,24 @@ import Pm2OtherHotel from '~/components/2pm/2pmOtherHotel.vue'
 import Pm2OtherNearHotel from '~/components/2pm/2pmOtherNearHotel.vue'
 import Pm2MyHotel from '~/components/2pm/2pmMyHotel.vue'
 
+import Dive3OtherHotel from '~/components/dive3/Dive3OtherHotel.vue'
+import Dive3OtherNearHotel from '~/components/dive3/Dive3OtherNearHotel.vue'
+import Dive3MyHotelSummer from '~/components/dive3/Dive3MyHotelSummer.vue'
+import Dive3MyHotelSummerNoSchedule from '~/components/dive3/Dive3MyHotelSummerNoSchedule.vue'
+import Dive3MyHotelWinter from '~/components/dive3/Dive3MyHotelWinter.vue'
+
 export default {
   components: {
     MailTemplate,
     Pm2OtherHotel,
     Pm2OtherNearHotel,
-    Pm2MyHotel
+    Pm2MyHotel,
+
+    Dive3OtherHotel,
+    Dive3OtherNearHotel,
+    Dive3MyHotelSummer,
+    Dive3MyHotelSummerNoSchedule,
+    Dive3MyHotelWinter
   },
   data: () => ({
     sender_name: '',
@@ -200,39 +252,44 @@ export default {
         ]
       },
       {
-        title: '3本目〜',
+        title: '3DIVE〜',
         active: true,
         items: [
-          { title: 'PM～他館', code: '3pm_other_hotel' },
-          { title: 'PM～宿泊有', code: '3pm_my_hotel' },
-          { title: 'PM～徒歩圏内宿', code: '3pm_other_near_hotel' }
+          { title: '宿泊 冬季', code: '3dive_my_hotel_winter' },
+          { title: '宿泊 夏季', code: '3dive_my_hotel_summer' },
+          {
+            title: '宿泊 夏季(未スケジュール発表)',
+            code: '3dive_my_hotel_summer_no_schedule'
+          },
+          { title: '他館 要送迎', code: '3dive_other_hotel' },
+          { title: '他館 徒歩圏内', code: '3dive_other_near_hotel' }
         ]
-      },
-      {
-        title: 'Education',
-        active: true,
-        items: [{ title: 'List Item' }]
-      },
-      {
-        title: 'Family',
-        active: true,
-        items: [{ title: 'List Item' }]
-      },
-      {
-        title: 'Health',
-        active: true,
-        items: [{ title: 'List Item' }]
-      },
-      {
-        title: 'Office',
-        active: true,
-        items: [{ title: 'List Item' }]
-      },
-      {
-        title: 'Promotions',
-        active: true,
-        items: [{ title: 'List Item' }]
       }
+      // {
+      //   title: 'Education',
+      //   active: true,
+      //   items: [{ title: 'List Item' }]
+      // },
+      // {
+      //   title: 'Family',
+      //   active: true,
+      //   items: [{ title: 'List Item' }]
+      // },
+      // {
+      //   title: 'Health',
+      //   active: true,
+      //   items: [{ title: 'List Item' }]
+      // },
+      // {
+      //   title: 'Office',
+      //   active: true,
+      //   items: [{ title: 'List Item' }]
+      // },
+      // {
+      //   title: 'Promotions',
+      //   active: true,
+      //   items: [{ title: 'List Item' }]
+      // }
     ]
   }),
   // watch: {
