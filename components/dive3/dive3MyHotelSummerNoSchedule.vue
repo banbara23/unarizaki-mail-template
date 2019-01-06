@@ -2,7 +2,8 @@
   <v-card>
     <v-card-title class="headline">{{title}}</v-card-title>
     <v-card-text>
-      <pre>こんにちは。ダイビングチームうなりざきの{{sender_name}}です。
+      <pre>{{receiver_name}} 様
+こんにちは。ダイビングチームうなりざきの{{sender_name}}です。
 この度はお問い合わせ頂きまして誠にありがとうございます。
 
 下記の日程で、ダイビング・宿泊のご予約を承りました。
@@ -120,6 +121,12 @@ http://itp.ne.jp/dir_result/?ad=47207&gr=225&cp=0&tb=1&st=1&pg=1&sk=3&srk=1
 
 <script>
 export default {
-  props: ['title', 'sender_name', 'checkin_date', 'checkout_date']
+  props: [
+    'title',
+    'receiver_name',
+    'sender_name',
+    'checkin_date',
+    'checkout_date'
+  ]
 }
 </script>

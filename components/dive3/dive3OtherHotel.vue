@@ -2,7 +2,8 @@
   <v-card>
     <v-card-title class="headline">{{title}}</v-card-title>
     <v-card-text>
-      <pre>こんにちは。ダイビングチームうなりざきの{{sender_name}}です。
+      <pre>{{receiver_name}} 様
+こんにちは。ダイビングチームうなりざきの{{sender_name}}です。
 この度はご予約頂きまして誠にありがとうございます。
 
 下記の日程でダイビングのご予約を承りました。
@@ -103,6 +104,12 @@ http://karrykanko.com/bus.html
 
 <script>
 export default {
-  props: ['title', 'sender_name', 'checkin_date', 'checkout_date']
+  props: [
+    'title',
+    'receiver_name',
+    'sender_name',
+    'checkin_date',
+    'checkout_date'
+  ]
 }
 </script>

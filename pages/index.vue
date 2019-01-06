@@ -5,7 +5,7 @@
     align-center
   >
 
-    <!-- 左ナビゲーション -->
+    <!-- 左ドロワー -->
     <v-navigation-drawer
       fixed
       app
@@ -51,19 +51,20 @@
       permanent
     >
       <div class="container fluid pb-0">
-        <p>入力</p>
+        <p>値を入力</p>
+
         <div>
           <v-text-field
-            label="担当者名"
-            placeholder=""
-            v-model="sender_name"
+            label="名前"
+            v-model="receiver_name"
           ></v-text-field>
         </div>
 
         <div>
           <v-text-field
-            label="名前"
+            label="担当者名"
             placeholder=""
+            v-model="sender_name"
           ></v-text-field>
         </div>
 
@@ -144,24 +145,25 @@
     <pm2-other-hotel
       v-if="selected_code == '2pm_other_hotel'"
       :title="title"
-      :text="mail_temp"
+      :receiver_name="receiver_name"
       :sender_name="sender_name"
       :checkin_date="checkin_date"
+      :checkout_date="checkout_date"
     ></pm2-other-hotel>
 
     <pm2-other-near-hotel
       v-if="selected_code == '2pm_other_near_hotel'"
       :title="title"
-      :text="mail_temp"
+      :receiver_name="receiver_name"
       :sender_name="sender_name"
       :checkin_date="checkin_date"
-    >
-    </pm2-other-near-hotel>
+      :checkout_date="checkout_date"
+    ></pm2-other-near-hotel>
 
     <pm2-my-hotel
       v-if="selected_code == '2pm_my_hotel'"
       :title="title"
-      :text="mail_temp"
+      :receiver_name="receiver_name"
       :sender_name="sender_name"
       :checkin_date="checkin_date"
     ></pm2-my-hotel>
@@ -169,6 +171,7 @@
     <dive3-my-hotel-winter
       v-if="selected_code == '3dive_my_hotel_winter'"
       :title="title"
+      :receiver_name="receiver_name"
       :sender_name="sender_name"
       :checkin_date="checkin_date"
       :checkout_date="checkout_date"
@@ -177,6 +180,7 @@
     <dive3-my-hotel-summer
       v-if="selected_code == '3dive_my_hotel_summer'"
       :title="title"
+      :receiver_name="receiver_name"
       :sender_name="sender_name"
       :checkin_date="checkin_date"
       :checkout_date="checkout_date"
@@ -185,6 +189,7 @@
     <dive3-my-hotel-summer-no-schedule
       v-if="selected_code == '3dive_my_hotel_summer_no_schedule'"
       :title="title"
+      :receiver_name="receiver_name"
       :sender_name="sender_name"
       :checkin_date="checkin_date"
       :checkout_date="checkout_date"
@@ -193,6 +198,7 @@
     <dive3-other-hotel
       v-if="selected_code == '3dive_other_hotel'"
       :title="title"
+      :receiver_name="receiver_name"
       :sender_name="sender_name"
       :checkin_date="checkin_date"
       :checkout_date="checkout_date"
@@ -201,6 +207,7 @@
     <dive3-other-near-hotel
       v-if="selected_code == '3dive_other_near_hotel'"
       :title="title"
+      :receiver_name="receiver_name"
       :sender_name="sender_name"
       :checkin_date="checkin_date"
       :checkout_date="checkout_date"
@@ -213,18 +220,16 @@
 //左メニューは外部JSから読み込む
 import leftMenuValue from './leftMenuValue.js'
 
-// import MailTemplate from '~/components/MailTemplate.vue'
-
 // 2PM
 import Pm2OtherHotel from '~/components/2pm/2pmOtherHotel.vue'
 import Pm2OtherNearHotel from '~/components/2pm/2pmOtherNearHotel.vue'
 import Pm2MyHotel from '~/components/2pm/2pmMyHotel.vue'
 // 3DIVE
-import Dive3OtherHotel from '~/components/dive3/Dive3OtherHotel.vue'
-import Dive3OtherNearHotel from '~/components/dive3/Dive3OtherNearHotel.vue'
+import Dive3MyHotelWinter from '~/components/dive3/Dive3MyHotelWinter.vue'
 import Dive3MyHotelSummer from '~/components/dive3/Dive3MyHotelSummer.vue'
 import Dive3MyHotelSummerNoSchedule from '~/components/dive3/Dive3MyHotelSummerNoSchedule.vue'
-import Dive3MyHotelWinter from '~/components/dive3/Dive3MyHotelWinter.vue'
+import Dive3OtherHotel from '~/components/dive3/Dive3OtherHotel.vue'
+import Dive3OtherNearHotel from '~/components/dive3/Dive3OtherNearHotel.vue'
 
 export default {
   components: {
@@ -239,8 +244,9 @@ export default {
     Dive3MyHotelWinter
   },
   data: () => ({
-    sender_name: '',
     selected_code: '',
+    receiver_name: '',
+    sender_name: '',
     mail_temp: '',
     title: '',
     valid: false,
@@ -250,21 +256,6 @@ export default {
     checkout_date: new Date().toISOString().substr(0, 10),
     items: leftMenuValue
   }),
-  // watch: {
-  //   sender_name: function(newName, oldName) {
-  //     if (!newName) return
-  //     if (oldName == '') {
-  //       oldName = 'sender_name'
-  //     }
-  //     this.mail_temp = this.mail_temp.replace(oldName, newName)
-  //   },
-  //   checkin_date: function(oldVal, newVal) {
-  //     this.mail_temp = this.mail_temp.replace(oldVal, newVal)
-  //   },
-  //   checkout_date: function(oldVal, newVal) {
-  //     this.mail_temp = this.mail_temp.replace(oldVal, newVal)
-  //   }
-  // },
   methods: {
     createTtile: function(title, subTitle) {
       return `${title} / ${subTitle}`
