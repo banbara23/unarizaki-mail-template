@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <!-- ツールバー -->
-    <v-toolbar
+    <!-- <v-toolbar
       color="blue-grey"
       dark
       fixed
@@ -9,7 +9,7 @@
       clipped-right
     >
       <v-toolbar-title v-text="title" />
-    </v-toolbar>
+    </v-toolbar> -->
 
     <!-- コンテンツ -->
     <v-content>
@@ -23,8 +23,8 @@
 
 <script>
 export default {
-  data: () => ({
-    title: 'うなりざきメールテンプレ'
-  })
+  // data: () => ({
+  //   title: 'うなりざきメールテンプレ'
+  // })
 }
 </script>

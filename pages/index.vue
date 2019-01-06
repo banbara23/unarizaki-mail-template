@@ -4,12 +4,51 @@
     justify-center
     align-center
   >
+
+    <!-- 左ナビゲーション -->
+    <v-navigation-drawer
+      fixed
+      app
+      permanent
+    >
+      <v-subheader>うなりざきメールテンプレ</v-subheader>
+      <v-list :expand=true>
+        <v-list-group
+          v-for="item in items"
+          v-model="item.active"
+          :key="item.title"
+          no-action
+        >
+          <v-list-tile slot="activator">
+            <v-list-tile-content>
+              <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+
+          <v-list-tile
+            v-for="subItem in item.items"
+            :key="subItem.title"
+            @click="selected_code = subItem.code, title=createTtile(item.title, subItem.title)"
+          >
+            <v-list-tile-content>
+              <v-list-tile-title>{{ subItem.title }}</v-list-tile-title>
+            </v-list-tile-content>
+
+            <v-list-tile-action>
+              <v-icon>{{ subItem.action }}</v-icon>
+            </v-list-tile-action>
+          </v-list-tile>
+        </v-list-group>
+      </v-list>
+    </v-navigation-drawer>
+
     <!-- 右ドロワー -->
     <v-navigation-drawer
       fixed
       right
       clipped
       app
+      permanent
     >
       <div class="container fluid pb-0">
         <p>入力</p>
@@ -100,42 +139,6 @@
 
       </div>
 
-    </v-navigation-drawer>
-    <!-- 左ナビゲーション -->
-    <v-navigation-drawer
-      fixed
-      app
-      clipped
-    >
-      <v-subheader>テンプレート</v-subheader>
-      <v-list :expand=true>
-        <v-list-group
-          v-for="item in items"
-          v-model="item.active"
-          :key="item.title"
-          no-action
-        >
-          <v-list-tile slot="activator">
-            <v-list-tile-content>
-              <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-
-          <v-list-tile
-            v-for="subItem in item.items"
-            :key="subItem.title"
-            @click="selected_code = subItem.code, title=createTtile(item.title, subItem.title)"
-          >
-            <v-list-tile-content>
-              <v-list-tile-title>{{ subItem.title }}</v-list-tile-title>
-            </v-list-tile-content>
-
-            <v-list-tile-action>
-              <v-icon>{{ subItem.action }}</v-icon>
-            </v-list-tile-action>
-          </v-list-tile>
-        </v-list-group>
-      </v-list>
     </v-navigation-drawer>
 
     <pm2-other-hotel
