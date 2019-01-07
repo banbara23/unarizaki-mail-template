@@ -10,10 +10,10 @@
 念のため、内容のご確認をお願い致します。
 
 ■ご宿泊
-チェックイン：　{{checkin_date}}　月日
+チェックイン：　  {{checkin_date}}　月日
 チェックアウト：　月日
-ご宿泊先：　　　　イルマーレウナリザキ
-お部屋タイプ：　　シングルルーム　室
+ご宿泊先：　　　　{{hotelType}}
+お部屋タイプ：　　シングルルーム　{{roomType}}室
 人数：　　　　　　男性　名様　女性　名様
 
 ■ダイビング
@@ -115,7 +115,9 @@ export default {
     'receiver_name',
     'sender_name',
     'checkin_date',
-    'checkout_date'
+    'checkout_date',
+    'hotelType',
+    'roomType'
   ]
 }
 </script>

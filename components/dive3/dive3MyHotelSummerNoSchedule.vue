@@ -126,7 +126,9 @@ export default {
     'receiver_name',
     'sender_name',
     'checkin_date',
-    'checkout_date'
+    'checkout_date',
+    'hotelType',
+    'roomType'
   ]
 }
 </script>

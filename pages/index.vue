@@ -4,7 +4,6 @@
     justify-center
     align-center
   >
-
     <!-- 左ドロワー -->
     <v-navigation-drawer
       fixed
@@ -124,7 +123,8 @@
 
         <div>
           <v-select
-            :items="items"
+            v-model="hotelType"
+            :items="['イルマーレ', 'ヴィラ']"
             box
             label="ご宿泊先"
           ></v-select>
@@ -132,7 +132,8 @@
 
         <div>
           <v-select
-            :items="items"
+            v-model="roomType"
+            :items="['禁煙', '喫煙']"
             box
             label="お部屋タイプ"
           ></v-select>
@@ -166,6 +167,8 @@
       :receiver_name="receiver_name"
       :sender_name="sender_name"
       :checkin_date="checkin_date"
+      :hotelType="hotelType"
+      :roomType="roomType"
     ></pm2-my-hotel>
 
     <dive3-my-hotel-winter
@@ -175,6 +178,8 @@
       :sender_name="sender_name"
       :checkin_date="checkin_date"
       :checkout_date="checkout_date"
+      :hotelType="hotelType"
+      :roomType="roomType"
     ></dive3-my-hotel-winter>
 
     <dive3-my-hotel-summer
@@ -184,6 +189,8 @@
       :sender_name="sender_name"
       :checkin_date="checkin_date"
       :checkout_date="checkout_date"
+      :hotelType="hotelType"
+      :roomType="roomType"
     ></dive3-my-hotel-summer>
 
     <dive3-my-hotel-summer-no-schedule
@@ -193,6 +200,8 @@
       :sender_name="sender_name"
       :checkin_date="checkin_date"
       :checkout_date="checkout_date"
+      :hotelType="hotelType"
+      :roomType="roomType"
     ></dive3-my-hotel-summer-no-schedule>
 
     <dive3-other-hotel
@@ -254,7 +263,9 @@ export default {
     checkout_menu: false,
     checkin_date: new Date().toISOString().substr(0, 10),
     checkout_date: new Date().toISOString().substr(0, 10),
-    items: leftMenuValue
+    items: leftMenuValue,
+    hotelType: '',
+    roomType: ''
   }),
   methods: {
     createTtile: function(title, subTitle) {
