@@ -1,6 +1,5 @@
 <template>
   <v-card>
-    <v-card-title class="headline">{{title}}</v-card-title>
     <v-card-text>
       <pre>{{receiver_name}} 様
 こんにちは。ダイビングチームうなりざきの{{sender_name}}です。
@@ -108,7 +107,6 @@ http://itp.ne.jp/dir_result/?ad=47207&gr=225&cp=0&tb=1&st=1&pg=1&sk=3&srk=1
 <script>
 export default {
   props: [
-    'title',
     'receiver_name',
     'sender_name',
     'checkin_date',

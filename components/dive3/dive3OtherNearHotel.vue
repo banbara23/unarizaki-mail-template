@@ -1,6 +1,5 @@
 <template>
   <v-card>
-    <v-card-title class="headline">{{title}}</v-card-title>
     <v-card-text>
       <pre>{{receiver_name}} 様
 こんにちは。ダイビングチームうなりざきの{{sender_name}}です。
@@ -70,12 +69,6 @@
 
 <script>
 export default {
-  props: [
-    'title',
-    'receiver_name',
-    'sender_name',
-    'checkin_date',
-    'checkout_date'
-  ]
+  props: ['receiver_name', 'sender_name', 'checkin_date', 'checkout_date']
 }
 </script>

@@ -189,7 +189,6 @@
 
       <dive3-my-hotel-winter
         v-if="selected_code == '3dive_my_hotel_winter'"
-        :title="title"
         :receiver_name="receiver_name"
         :sender_name="sender_name"
         :checkin_date="checkin_date"
@@ -200,7 +199,6 @@
 
       <dive3-my-hotel-summer
         v-if="selected_code == '3dive_my_hotel_summer'"
-        :title="title"
         :receiver_name="receiver_name"
         :sender_name="sender_name"
         :checkin_date="checkin_date"
@@ -211,7 +209,6 @@
 
       <dive3-my-hotel-summer-no-schedule
         v-if="selected_code == '3dive_my_hotel_summer_no_schedule'"
-        :title="title"
         :receiver_name="receiver_name"
         :sender_name="sender_name"
         :checkin_date="checkin_date"
@@ -222,7 +219,6 @@
 
       <dive3-other-hotel
         v-if="selected_code == '3dive_other_hotel'"
-        :title="title"
         :receiver_name="receiver_name"
         :sender_name="sender_name"
         :checkin_date="checkin_date"
@@ -231,7 +227,6 @@
 
       <dive3-other-near-hotel
         v-if="selected_code == '3dive_other_near_hotel'"
-        :title="title"
         :receiver_name="receiver_name"
         :sender_name="sender_name"
         :checkin_date="checkin_date"
@@ -301,3 +296,4 @@ export default {
   }
 }
 </script>
+
