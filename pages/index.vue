@@ -6,29 +6,31 @@
   >
     <!-- ツールバー -->
     <v-toolbar
-      color="blue-grey"
+      color="indigo"
       dark
       fixed
       app
       clipped-right
     >
-
       <v-btn
         icon
+        fab
+        small
+        color="deep-orange"
         @click="witeToClipboard()"
       >
         <v-icon>file_copy</v-icon>
-
       </v-btn>
       <v-toolbar-title v-text="title" />
     </v-toolbar>
+
     <!-- 左ドロワー -->
     <v-navigation-drawer
       fixed
       app
       permanent
     >
-      <v-subheader>うなりざきメールテンプレ</v-subheader>
+      <v-subheader>メールテンプレ</v-subheader>
       <v-list :expand=true>
         <v-list-group
           v-for="item in items"
