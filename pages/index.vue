@@ -163,7 +163,6 @@
     <div id="template">
       <pm2-other-hotel
         v-if="selected_code == '2pm_other_hotel'"
-        :title="title"
         :receiver_name="receiver_name"
         :sender_name="sender_name"
         :checkin_date="checkin_date"
@@ -172,7 +171,6 @@
 
       <pm2-other-near-hotel
         v-if="selected_code == '2pm_other_near_hotel'"
-        :title="title"
         :receiver_name="receiver_name"
         :sender_name="sender_name"
         :checkin_date="checkin_date"
@@ -181,7 +179,6 @@
 
       <pm2-my-hotel
         v-if="selected_code == '2pm_my_hotel'"
-        :title="title"
         :receiver_name="receiver_name"
         :sender_name="sender_name"
         :checkin_date="checkin_date"
