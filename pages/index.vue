@@ -4,6 +4,24 @@
     justify-center
     align-center
   >
+    <!-- ツールバー -->
+    <v-toolbar
+      color="blue-grey"
+      dark
+      fixed
+      app
+      clipped-right
+    >
+
+      <v-btn
+        icon
+        @click="witeToClipboard()"
+      >
+        <v-icon>file_copy</v-icon>
+
+      </v-btn>
+      <v-toolbar-title v-text="title" />
+    </v-toolbar>
     <!-- 左ドロワー -->
     <v-navigation-drawer
       fixed
@@ -140,87 +158,87 @@
       </div>
 
     </v-navigation-drawer>
+    <div id="template">
+      <pm2-other-hotel
+        v-if="selected_code == '2pm_other_hotel'"
+        :title="title"
+        :receiver_name="receiver_name"
+        :sender_name="sender_name"
+        :checkin_date="checkin_date"
+        :checkout_date="checkout_date"
+      ></pm2-other-hotel>
 
-    <pm2-other-hotel
-      v-if="selected_code == '2pm_other_hotel'"
-      :title="title"
-      :receiver_name="receiver_name"
-      :sender_name="sender_name"
-      :checkin_date="checkin_date"
-      :checkout_date="checkout_date"
-    ></pm2-other-hotel>
+      <pm2-other-near-hotel
+        v-if="selected_code == '2pm_other_near_hotel'"
+        :title="title"
+        :receiver_name="receiver_name"
+        :sender_name="sender_name"
+        :checkin_date="checkin_date"
+        :checkout_date="checkout_date"
+      ></pm2-other-near-hotel>
 
-    <pm2-other-near-hotel
-      v-if="selected_code == '2pm_other_near_hotel'"
-      :title="title"
-      :receiver_name="receiver_name"
-      :sender_name="sender_name"
-      :checkin_date="checkin_date"
-      :checkout_date="checkout_date"
-    ></pm2-other-near-hotel>
+      <pm2-my-hotel
+        v-if="selected_code == '2pm_my_hotel'"
+        :title="title"
+        :receiver_name="receiver_name"
+        :sender_name="sender_name"
+        :checkin_date="checkin_date"
+        :checkout_date="checkout_date"
+        :hotelName="hotelName"
+        :roomType="roomType"
+      ></pm2-my-hotel>
 
-    <pm2-my-hotel
-      v-if="selected_code == '2pm_my_hotel'"
-      :title="title"
-      :receiver_name="receiver_name"
-      :sender_name="sender_name"
-      :checkin_date="checkin_date"
-      :checkout_date="checkout_date"
-      :hotelName="hotelName"
-      :roomType="roomType"
-    ></pm2-my-hotel>
+      <dive3-my-hotel-winter
+        v-if="selected_code == '3dive_my_hotel_winter'"
+        :title="title"
+        :receiver_name="receiver_name"
+        :sender_name="sender_name"
+        :checkin_date="checkin_date"
+        :checkout_date="checkout_date"
+        :hotelName="hotelName"
+        :roomType="roomType"
+      ></dive3-my-hotel-winter>
 
-    <dive3-my-hotel-winter
-      v-if="selected_code == '3dive_my_hotel_winter'"
-      :title="title"
-      :receiver_name="receiver_name"
-      :sender_name="sender_name"
-      :checkin_date="checkin_date"
-      :checkout_date="checkout_date"
-      :hotelName="hotelName"
-      :roomType="roomType"
-    ></dive3-my-hotel-winter>
+      <dive3-my-hotel-summer
+        v-if="selected_code == '3dive_my_hotel_summer'"
+        :title="title"
+        :receiver_name="receiver_name"
+        :sender_name="sender_name"
+        :checkin_date="checkin_date"
+        :checkout_date="checkout_date"
+        :hotelName="hotelName"
+        :roomType="roomType"
+      ></dive3-my-hotel-summer>
 
-    <dive3-my-hotel-summer
-      v-if="selected_code == '3dive_my_hotel_summer'"
-      :title="title"
-      :receiver_name="receiver_name"
-      :sender_name="sender_name"
-      :checkin_date="checkin_date"
-      :checkout_date="checkout_date"
-      :hotelName="hotelName"
-      :roomType="roomType"
-    ></dive3-my-hotel-summer>
+      <dive3-my-hotel-summer-no-schedule
+        v-if="selected_code == '3dive_my_hotel_summer_no_schedule'"
+        :title="title"
+        :receiver_name="receiver_name"
+        :sender_name="sender_name"
+        :checkin_date="checkin_date"
+        :checkout_date="checkout_date"
+        :hotelName="hotelName"
+        :roomType="roomType"
+      ></dive3-my-hotel-summer-no-schedule>
 
-    <dive3-my-hotel-summer-no-schedule
-      v-if="selected_code == '3dive_my_hotel_summer_no_schedule'"
-      :title="title"
-      :receiver_name="receiver_name"
-      :sender_name="sender_name"
-      :checkin_date="checkin_date"
-      :checkout_date="checkout_date"
-      :hotelName="hotelName"
-      :roomType="roomType"
-    ></dive3-my-hotel-summer-no-schedule>
+      <dive3-other-hotel
+        v-if="selected_code == '3dive_other_hotel'"
+        :title="title"
+        :receiver_name="receiver_name"
+        :sender_name="sender_name"
+        :checkin_date="checkin_date"
+        :checkout_date="checkout_date"
+      ></dive3-other-hotel>
 
-    <dive3-other-hotel
-      v-if="selected_code == '3dive_other_hotel'"
-      :title="title"
-      :receiver_name="receiver_name"
-      :sender_name="sender_name"
-      :checkin_date="checkin_date"
-      :checkout_date="checkout_date"
-    ></dive3-other-hotel>
-
-    <dive3-other-near-hotel
-      v-if="selected_code == '3dive_other_near_hotel'"
-      :title="title"
-      :receiver_name="receiver_name"
-      :sender_name="sender_name"
-      :checkin_date="checkin_date"
-      :checkout_date="checkout_date"
-    ></dive3-other-near-hotel>
-
+      <dive3-other-near-hotel
+        v-if="selected_code == '3dive_other_near_hotel'"
+        :title="title"
+        :receiver_name="receiver_name"
+        :sender_name="sender_name"
+        :checkin_date="checkin_date"
+        :checkout_date="checkout_date"
+      ></dive3-other-near-hotel>
+    </div>
   </v-layout>
 </template>
 
@@ -269,6 +287,17 @@ export default {
   methods: {
     createTtile: function(title, subTitle) {
       return `${title} / ${subTitle}`
+    },
+    witeToClipboard() {
+      const copyText = this.$el.querySelector('#template').textContent
+      navigator.clipboard
+        .writeText(copyText)
+        .then(() => {
+          console.log('Text is on the clipboard.')
+        })
+        .catch(e => {
+          console.error(e)
+        })
     }
   }
 }
