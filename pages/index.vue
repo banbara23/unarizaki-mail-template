@@ -100,14 +100,14 @@
           >
             <v-text-field
               slot="activator"
-              v-model="checkin_date"
+              v-model="computedDateFormatted"
               label="チェックイン日"
               prepend-icon="event"
               readonly
             ></v-text-field>
             <v-date-picker
               :day-format="date => new Date(date).getDate()"
-              v-model="checkin_date"
+              v-model="checkinDate"
               @input="checkin_menu = false"
               locale="jp"
             ></v-date-picker>
@@ -165,7 +165,7 @@
         v-if="selected_code == '2pm_other_hotel'"
         :receiver_name="receiver_name"
         :sender_name="sender_name"
-        :checkin_date="checkin_date"
+        :checkin_date="checkinDateFormatted"
         :checkout_date="checkout_date"
       ></pm2-other-hotel>
 
@@ -173,7 +173,7 @@
         v-if="selected_code == '2pm_other_near_hotel'"
         :receiver_name="receiver_name"
         :sender_name="sender_name"
-        :checkin_date="checkin_date"
+        :checkin_date="checkinDateFormatted"
         :checkout_date="checkout_date"
       ></pm2-other-near-hotel>
 
@@ -181,7 +181,7 @@
         v-if="selected_code == '2pm_my_hotel'"
         :receiver_name="receiver_name"
         :sender_name="sender_name"
-        :checkin_date="checkin_date"
+        :checkin_date="checkinDateFormatted"
         :checkout_date="checkout_date"
         :hotelName="hotelName"
         :roomType="roomType"
@@ -273,14 +273,38 @@ export default {
     checkin_menu: false,
     checkout_menu: false,
     checkin_date: new Date().toISOString().substr(0, 10),
+    checkinDate: new Date().toISOString().substr(0, 10),
+    checkinDateFormatted: '',
     checkout_date: new Date().toISOString().substr(0, 10),
     items: leftMenuValue,
     hotelName: '',
     roomType: ''
   }),
+  computed: {
+    computedDateFormatted() {
+      return this.formatDate(this.checkinDate)
+    }
+  },
+  watch: {
+    checkinDate() {
+      this.checkinDateFormatted = this.formatDate(this.checkinDate)
+    }
+  },
   methods: {
     createTtile: function(title, subTitle) {
       return `${title} / ${subTitle}`
+    },
+    formatDate(date) {
+      if (!date) return null
+
+      const [year, month, day] = date.split('-')
+      return `${year}/${month}/${day}`
+    },
+    parseDate(date) {
+      if (!date) return null
+
+      const [year, month, day] = date.split('/')
+      return `${year}/${month.padStart(2, '0')}/${day.padStart(2, '0')}`
     },
     witeToClipboard() {
       const copyText = this.$el.querySelector('#template').textContent
@@ -296,4 +320,3 @@ export default {
   }
 }
 </script>
-
