@@ -124,8 +124,7 @@
         <div>
           <v-select
             v-model="hotelType"
-            :items="['イルマーレ', 'ヴィラ']"
-            box
+            :items="['イルマーレウナリザキ', 'ヴィラうなりざき']"
             label="ご宿泊先"
           ></v-select>
         </div>
@@ -134,7 +133,6 @@
           <v-select
             v-model="roomType"
             :items="['禁煙', '喫煙']"
-            box
             label="お部屋タイプ"
           ></v-select>
         </div>
