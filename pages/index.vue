@@ -165,6 +165,7 @@
       :receiver_name="receiver_name"
       :sender_name="sender_name"
       :checkin_date="checkin_date"
+      :checkout_date="checkout_date"
       :hotelName="hotelName"
       :roomType="roomType"
     ></pm2-my-hotel>
