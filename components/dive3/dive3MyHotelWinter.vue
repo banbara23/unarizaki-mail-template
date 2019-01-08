@@ -12,7 +12,7 @@
 ■ご宿泊
 チェックイン：　　{{checkin_date}}
 チェックアウト：　{{checkout_date}}
-ご宿泊先：　　　　{{hotelType}}
+ご宿泊先：　　　　{{hotelName}}
 部屋タイプ：　　　シングルルーム　{{roomType}}室
 人数：　　　　　　男性　名様　女性　名様
 
@@ -114,7 +114,7 @@ export default {
     'sender_name',
     'checkin_date',
     'checkout_date',
-    'hotelType',
+    'hotelName',
     'roomType'
   ]
 }

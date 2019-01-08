@@ -123,7 +123,7 @@
 
         <div>
           <v-select
-            v-model="hotelType"
+            v-model="hotelName"
             :items="['イルマーレウナリザキ', 'ヴィラうなりざき']"
             label="ご宿泊先"
           ></v-select>
@@ -165,7 +165,7 @@
       :receiver_name="receiver_name"
       :sender_name="sender_name"
       :checkin_date="checkin_date"
-      :hotelType="hotelType"
+      :hotelName="hotelName"
       :roomType="roomType"
     ></pm2-my-hotel>
 
@@ -176,7 +176,7 @@
       :sender_name="sender_name"
       :checkin_date="checkin_date"
       :checkout_date="checkout_date"
-      :hotelType="hotelType"
+      :hotelName="hotelName"
       :roomType="roomType"
     ></dive3-my-hotel-winter>
 
@@ -187,7 +187,7 @@
       :sender_name="sender_name"
       :checkin_date="checkin_date"
       :checkout_date="checkout_date"
-      :hotelType="hotelType"
+      :hotelName="hotelName"
       :roomType="roomType"
     ></dive3-my-hotel-summer>
 
@@ -198,7 +198,7 @@
       :sender_name="sender_name"
       :checkin_date="checkin_date"
       :checkout_date="checkout_date"
-      :hotelType="hotelType"
+      :hotelName="hotelName"
       :roomType="roomType"
     ></dive3-my-hotel-summer-no-schedule>
 
@@ -262,7 +262,7 @@ export default {
     checkin_date: new Date().toISOString().substr(0, 10),
     checkout_date: new Date().toISOString().substr(0, 10),
     items: leftMenuValue,
-    hotelType: '',
+    hotelName: '',
     roomType: ''
   }),
   methods: {
